@@ -1,0 +1,114 @@
+<!-- 
+    Documento HTML para el panel de administrador
+    Incluye Bootstrap 4.5.2, FontAwesome 5.15.4 y scripts personalizados
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Viewport configurado con zoom out ligero -->
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Administrador</title>
+    
+    <!-- Enlaces a recursos externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Script personalizado para mostrar hora y fecha -->
+    <script src="../scripts/horaYfecha.js" defer></script>
+    
+    <!-- Estilos CSS personalizados -->
+    <style>
+        /* Color de fondo principal */
+        body {
+            background-color: #fbfcfc;
+        }
+        /* Clase para agregar sombras a elementos */
+        .sombra {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        /* Estilos para el logo */
+        .logo {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado del panel -->
+    <div class="container-fluid alert alert-info sombra">
+        <div class="row">
+            <!-- Columna izquierda: título y botón de cerrar sesión -->
+            <div class="col-8">
+                <h1>Administrador</h1>
+                <!-- Botón de cerrar sesión con confirmación -->
+                <a href="../index.html" class="btn btn-danger btn-sm sombra" onclick="return confirmarCierreSesion()">Cerrar Sesión</a>
+                <!-- Display del usuario actual (NOTA: Sintaxis PHP incorrecta) -->
+            </div>
+            <!-- Columna central: display de fecha y hora -->
+            <div class="col-3">
+                <p id="fechaHora"></p>
+            </div>
+            <!-- Columna derecha: logo -->
+            <div class="col-1">
+                <div class="logo-container">
+                    <img src="../img/presentacion.png" alt="Logo de la empresa" class="logo" style="width: 80px; height: auto;">
+                </div>
+            </div>
+        </div>    
+    </div>
+
+    <!-- Menú principal de navegación -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Botones de navegación principales -->
+                <a href="factura_borrador.php" class="btn btn-success sombra">Nueva Factura</a>
+                <a href="ventas.php" class="btn btn-primary sombra">Administrar Ventas</a>
+                <a href="facturas.php" class="btn btn-primary sombra">Administrar Facturas</a>
+                <a href="clientes.php" class="btn btn-primary sombra">Administrar Clientes</a>
+                <a href="productos.php" class="btn btn-primary sombra">Administrar Productos</a>
+                <a href="usuario.php" class="btn btn-primary sombra">Administrar Usuarios</a>
+                <a href="Historial.php" class="btn btn-info sombra">Historial de Cambios</a>
+                <a href="backup.php" class="btn btn-info sombra">Backup</a>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+
+    <!-- Sección de notificaciones y alertas -->
+    <div class="container-fluid">
+        <div class="alert alert-info sombra">
+            <div class="row">
+                <!-- Botón de actualizar -->
+                <div class="col-2"> 
+                    <a href="#" class="btn btn-primary" onclick="location.reload();">Actualizar página</a> 
+                </div>
+                <!-- Título de notificaciones -->
+                <div class="col-4"> 
+                    <h3>Notificaciones <i class="fas fa-bell"></i> y Alertas <i class="fas fa-exclamation-triangle"></i></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedores vacíos para contenido dinámico -->
+    <div class="container-fluid">
+    </div>
+    <div class="container-fluid">
+    </div>
+    <div class="container-fluid">
+    </div>
+
+    <!-- Script para confirmar cierre de sesión -->
+    <script>
+    function confirmarCierreSesion() {
+        return confirm("¿Está seguro de que desea cerrar la sesión?");
+    }
+    </script>
+</body>
+</html>
