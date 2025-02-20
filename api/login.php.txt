@@ -1,0 +1,29 @@
+<?php
+header("Content-Type: application/json");
+
+include ("conexion/conexion.php");
+
+$response = array();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usuario = $_POST['usuario'];
+    $contrasena = $_POST['contrasena'];
+
+    // Aquí deberías validar las credenciales en la base de datos
+    $query = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'";
+    $result = mysqli_query($conexion, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        $response['status'] = 'success';
+        $response['message'] = 'Inicio de sesión exitoso';
+    } else {
+        $response['status'] = 'error';
+        $response['message'] = 'Usuario o contraseña incorrectos';
+    }
+} else {
+    $response['status'] = 'error';
+    $response['message'] = 'Método no permitido';
+}
+
+echo json_encode($response);
+?>
